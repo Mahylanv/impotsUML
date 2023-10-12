@@ -1,16 +1,23 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'impot.php';
+require('impot.php');
 
-    $nom = $_POST["nom"];
-    $revenus = $_POST["revenus"];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $revenus = $_POST['revenus'];
+    $nom = $_POST['nom'];
 
-    $impotCalculator = new ImpotCalculator($revenus);
-    $impot = $impotCalculator->calculerImpot();
-
-    echo "Nom : " . $nom . "<br>";
-    echo "Revenus : " . $revenus . "<br>";
-
-    echo "Mr " . $nom . " votre impôt est de : " . $impot . " euros";
+    $impot = new Impot($nom, $revenus);
+    $render = $impot->AfficheImpot();
+} else {
+    $render = "Formulaire vide";
 }
 
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <p><?= $render ?></p>
+</body>
+</html>
