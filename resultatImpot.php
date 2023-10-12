@@ -13,4 +13,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     echo "Mr " . $nom . " votre impôt est de : " . $impot . " euros";
 }
-?>
+

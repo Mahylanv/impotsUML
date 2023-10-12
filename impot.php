@@ -18,5 +18,4 @@ class ImpotCalculator {
         return $montantImpot;
     }
 }
-?>
 
